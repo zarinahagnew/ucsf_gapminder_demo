@@ -1,0 +1,35 @@
+---
+title: "Zarinah does all the things with R"
+author: "Zarinah Agnew"
+date: "March 6, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Plotting Life Expectancy by Year
+We see that for all three cuntries we see in a non linear increase in life expectancy over time, from 1950 to 2010 (ish)
+
+```{r load the data}
+# Loading the data and pulling out three countries
+gapM = read.table(file = "output/combined_gapMinder.tsv", sep = "\t", header = TRUE) # 
+
+bolivia <- gapM[gapM$country == 'Bolivia', ]
+argentina <- gapM[gapM$country == 'Argentina', ]
+chile <- gapM[gapM$country == 'Chile', ]
+country <- gapM[gapM$country == 'Bolivia'| gapM$country == 'Argentina' | gapM$country == 'Chile', ]
+```
+
+## Including Plots
+
+```{r pressure, echo=FALSE}
+# PLOTZ YEAR AND GDP    
+plot(x=bolivia$year, y=bolivia$lifeExp, main = "Year x Life Exp: Bolivia", xlab = "year", ylab = "life exp")
+plot(x=argentina$year, y=argentina$lifeExp, main = "Year x Life Exp: Argentina", xlab = "year", ylab = "life exp")
+plot(x=chile$year, y=chile$lifeExp, main = "Year x Life Exp: Chile", xlab = "year", ylab = "life exp")
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
